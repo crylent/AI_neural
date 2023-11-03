@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using AI_neural.Image;
 
 namespace AI_neural.Algorithm;
 

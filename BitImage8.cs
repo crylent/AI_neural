@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Runtime.Serialization;
 
-namespace AI_neural.Image;
+namespace AI_neural;
 
 [DataContract]
 public class BitImage8

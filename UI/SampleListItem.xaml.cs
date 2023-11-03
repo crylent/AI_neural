@@ -1,7 +1,6 @@
 using System.IO;
 using System.Windows;
 using System.Windows.Controls;
-using AI_neural.Image;
 
 namespace AI_neural.UI;
 
