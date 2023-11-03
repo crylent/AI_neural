@@ -1,0 +1,68 @@
+﻿<Window x:Class="AI_neural.UI.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ui="clr-namespace:AI_neural.UI"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Background="Gainsboro">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="290"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="20">
+            <DockPanel>
+                <Border 
+                    BorderBrush="Gray" BorderThickness="1"
+                    Margin="0,0,0,10" 
+                    Background="White" >
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button Width="40" Height="40" Margin="2,0" Click="OnActionCreate">
+                            <Image Source="/Icons/add.png" Height="28"/>
+                        </Button>
+                        <Button Width="40" Height="40" Margin="2,0" Click="OnActionSave">
+                            <Image Source="/Icons/save.png" Height="28"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+                <Border 
+                    BorderBrush="Gray" BorderThickness="1"
+                    Margin="0,0,0,10" 
+                    Background="White" 
+                    HorizontalAlignment="Right">
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Button x:Name="DrawButton"
+                                Width="40" Height="40"
+                                Margin="2,0" 
+                                Click="OnActionDraw"
+                                Style="{StaticResource SelectedButton}">
+                            <Image Source="/Icons/draw.png" Height="28"/>
+                        </Button>
+                        <Button x:Name="EraseButton" 
+                                Width="40" Height="40" 
+                                Margin="2,0" 
+                                Click="OnActionErase">
+                            <Image Source="/Icons/erase.png" Height="32"/>
+                        </Button>
+                    </StackPanel>
+                </Border>
+            </DockPanel>
+            <ListView x:Name="SampleList" 
+                      Height="200" 
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                      ScrollViewer.VerticalScrollBarVisibility="Hidden"
+                      SelectionChanged="OnSampleSelected"/>
+            <Border Margin="0,10" BorderBrush="Gray" BorderThickness="1">
+                <StackPanel Background="White">
+                    <Button Margin="10" Content="RUN" FontSize="24" Click="OnActionRun"/>
+                    <StackPanel Margin="10,0,10,10" Orientation="Horizontal">
+                        <TextBlock FontSize="18">Best Match →</TextBlock>
+                        <TextBlock x:Name="BestMatch" FontSize="18" Margin="10,0"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+        <ui:BitCanvas x:Name="Canvas" Grid.Column="1" Height="400" Width="400"/>
+    </Grid>
+</Window>

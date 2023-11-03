@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>WinExe</OutputType>
+        <TargetFramework>net7.0-windows</TargetFramework>
+        <Nullable>enable</Nullable>
+        <UseWPF>true</UseWPF>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Remove="Icons\edit.png" />
+      <Resource Include="Icons\edit.png" />
+      <None Remove="Icons\remove.png" />
+      <Resource Include="Icons\remove.png" />
+      <None Remove="Icons\add.png" />
+      <None Remove="Icons\black_pencil.png" />
+      <Resource Include="Icons\draw.png" />
+      <None Remove="Icons\whie_pencil.png" />
+      <None Remove="Icons\erase.png" />
+      <Resource Include="Icons\erase.png" />
+      <None Remove="Icons\save.png" />
+      <Resource Include="Icons\save.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Resource Include="Icons\add.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ApplicationDefinition Include="UI\App.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </ApplicationDefinition>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Page Update="UI\MainWindow.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="UI\SampleNameDialog.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+      <Page Update="UI\SampleListItem.xaml">
+        <Generator>MSBuild:Compile</Generator>
+        <XamlRuntime>Wpf</XamlRuntime>
+        <SubType>Designer</SubType>
+      </Page>
+    </ItemGroup>
+
+</Project>
