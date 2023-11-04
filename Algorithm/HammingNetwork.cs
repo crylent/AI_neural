@@ -13,6 +13,8 @@ public class HammingNetwork
     private readonly float _epsilon;
     private const float K1 = 1f / Size;
     private const float Un = 1f / K1;
+
+    private const int MaxIterations = 1000;
     
     public HammingNetwork(IReadOnlyList<BitImage8> samples)
     {
@@ -55,9 +57,12 @@ public class HammingNetwork
             };
         }
         Debug.Print($"{string.Join(" ", u)}");
-
-        int bestMatch;
-        while (MaxnetStep(ref u, out bestMatch)) {}
+        
+        int bestMatch, iterations = 0;
+        while (MaxnetStep(ref u, out bestMatch) && iterations < MaxIterations)
+        {
+            iterations++;
+        }
 
         return bestMatch;
     }
