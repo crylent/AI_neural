@@ -50,8 +50,22 @@ namespace AI_neural.UI
         {
             var name = SampleNameDialog.Prompt();
             if (name == null) return;
-            var item = new SampleListItem(SampleList, name, Canvas.Image);
-            SampleList.Items.Add(item);
+            
+            // replace existing item
+            var replacedExisting = false;
+            foreach (var listItem in SampleList.Items)
+            {
+                var sample = (listItem as SampleListItem)!;
+                if (sample.Text.Text != name) continue;
+                sample.Image = Canvas.Image;
+                replacedExisting = true;
+            }
+
+            if (!replacedExisting) // create new item
+            {
+                var item = new SampleListItem(SampleList, name, Canvas.Image);
+                SampleList.Items.Add(item);
+            }
 
             // save sample to file
             var sampleFile = new SampleFile(name, Canvas.Image);

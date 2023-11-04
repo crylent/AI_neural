@@ -9,7 +9,7 @@ public partial class SampleListItem
     private readonly ListView _owner;
 
     private string _itemName = null!;
-    public BitImage8 Image { get; private set; }
+    public BitImage8 Image;
 
     public SampleListItem(ListView owner, string itemName, BitImage8 image)
     {
