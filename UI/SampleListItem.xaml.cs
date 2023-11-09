@@ -28,8 +28,7 @@ public partial class SampleListItem
     private void OnRemove(object sender, RoutedEventArgs e)
     {
         _owner.Items.Remove(this);
-        
-        File.Delete($"samples/{_itemName}");
+        SampleFile.Delete(_itemName);
     }
 
     private void OnRename(object sender, RoutedEventArgs e)

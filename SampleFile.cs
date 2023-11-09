@@ -50,5 +50,10 @@ public class SampleFile: IExtensibleDataObject
         return LoadAllSamples();
     }
 
+    public static void Delete(string sampleName)
+    {
+        File.Delete(CreateFilename(sampleName));
+    }
+
     public ExtensionDataObject? ExtensionData { get; set; }
 }
