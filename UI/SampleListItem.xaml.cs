@@ -9,6 +9,7 @@ public partial class SampleListItem
 
     private string _itemName = null!;
     public BitImage8 Image;
+    public bool AddedToHebb { get; private set; }
 
     public SampleListItem(ListView owner, string itemName, BitImage8 image)
     {
@@ -35,5 +36,11 @@ public partial class SampleListItem
         var name = SampleNameDialog.Prompt(_itemName);
         if (name == null) return;
         SetName(name);
+    }
+
+    public void AddToHebb()
+    {
+        AddedToHebb = true;
+        Checked.Visibility = Visibility.Visible;
     }
 }

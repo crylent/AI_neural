@@ -7,8 +7,9 @@
              Height="40" Width="240"
              d:DesignHeight="40" d:DesignWidth="240">
     <DockPanel>
-        <TextBlock x:Name="Text" VerticalAlignment="Center" FontSize="20" Margin="5,0" HorizontalAlignment="Left">SampleName</TextBlock>
-        <StackPanel Width="90" Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+        <TextBlock x:Name="Text" VerticalAlignment="Center" FontSize="20" Margin="5,0" HorizontalAlignment="Left">Sample</TextBlock>
+        <StackPanel Height="40" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Image x:Name="Checked" Source="/Icons/checked.png" Visibility="Collapsed"/>
             <Button Width="40" Height="40" Click="OnRename">
                 <Image Source="/Icons/edit.png"/>
             </Button>

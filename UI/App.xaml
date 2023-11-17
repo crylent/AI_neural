@@ -18,6 +18,9 @@
                                         <Trigger Property="IsMouseOver" Value="False">
                                             <Setter Property="Background" Value="LightSteelBlue"/>
                                         </Trigger>
+                                        <Trigger Property="IsEnabled" Value="False">
+                                            <Setter Property="Background" Value="LightGray"/>
+                                        </Trigger>
                                     </Style.Triggers>
                                 </Style>
                             </Border.Style>
@@ -29,6 +32,11 @@
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Foreground" Value="DarkGray"/>
+                </Trigger>
+            </Style.Triggers>
         </Style>
         <Style x:Key="SelectedButton" TargetType="Button">
             <Setter Property="Template">

@@ -20,6 +20,8 @@
       <Resource Include="Icons\erase.png" />
       <None Remove="Icons\save.png" />
       <Resource Include="Icons\save.png" />
+      <None Remove="Icons\checked.png" />
+      <Resource Include="Icons\checked.png" />
     </ItemGroup>
 
     <ItemGroup>

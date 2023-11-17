@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using AI_neural.Algorithm;
@@ -12,6 +13,9 @@ namespace AI_neural.UI
     {
         private readonly Style _defaultButtonStyle;
         private readonly Style _selectedButtonStyle;
+
+        private readonly HebbNetwork _hebb = new();
+        private bool _hebbSelected;
         
         public MainWindow()
         {
@@ -74,16 +78,52 @@ namespace AI_neural.UI
 
         private void OnActionRun(object sender, RoutedEventArgs e)
         {
-            var samples = (from object? sample in SampleList.Items select (sample as SampleListItem)!.Image).ToList();
-            var network = new HammingNetwork(samples);
+            NeutralNetwork network;
+            if (_hebbSelected)
+            {
+                network = _hebb;
+            }
+            else
+            {
+                var samples = (from object? sample in SampleList.Items select (sample as SampleListItem)!.Image).ToList();
+                network = new HammingNetwork(samples);
+            }
             var result = network.FindBestMatch(Canvas.Image);
-            BestMatch.Text = (SampleList.Items[result] as SampleListItem)!.Text.Text;
+            BestMatch.Text = result == NeutralNetwork.NoMatch ? "No" : (SampleList.Items[result] as SampleListItem)!.Text.Text;
+        }
+
+        private void OnActionLearn(object sender, RoutedEventArgs e)
+        {
+            var samples = new List<BitImage8>();
+            foreach (SampleListItem item in SampleList.Items)
+            {
+                if (item.AddedToHebb) continue;
+                item.AddToHebb();
+                samples.Add(item.Image);
+            }
+            _hebb.Learn(samples.ToArray());
         }
 
         private void OnSampleSelected(object sender, SelectionChangedEventArgs e)
         {
             if (e.AddedItems.Count == 0) return;
             Canvas.LoadImage((e.AddedItems[0] as SampleListItem)!.Image.Clone());
+        }
+
+        private void OnHammingSelected(object sender, RoutedEventArgs e)
+        {
+            _hebbSelected = false;
+            HammingButton.Style = _selectedButtonStyle;
+            HebbButton.Style = _defaultButtonStyle;
+            LearnButton.IsEnabled = false;
+        }
+
+        private void OnHebbSelected(object sender, RoutedEventArgs e)
+        {
+            _hebbSelected = true;
+            HebbButton.Style = _selectedButtonStyle;
+            HammingButton.Style = _defaultButtonStyle;
+            LearnButton.IsEnabled = true;
         }
     }
 }

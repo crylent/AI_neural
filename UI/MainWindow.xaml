@@ -57,13 +57,47 @@
                 </Border>
             </DockPanel>
             <ListView Grid.Row="1" x:Name="SampleList" 
-                      MinHeight="200" 
+                      MinHeight="150" 
                       ScrollViewer.HorizontalScrollBarVisibility="Disabled"
                       ScrollViewer.VerticalScrollBarVisibility="Hidden"
                       SelectionChanged="OnSampleSelected"/>
             <Border Grid.Row="2" Margin="0,10" BorderBrush="Gray" BorderThickness="1">
                 <StackPanel Background="White">
-                    <Button Margin="10" Content="RUN" FontSize="24" Click="OnActionRun"/>
+                    <Grid Margin="10,10,10,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Margin="0,0,20,0"
+                                   FontSize="14"
+                                   Text="Network:" VerticalAlignment="Center"/>
+                        <Button Grid.Column="1" x:Name="HammingButton"
+                                Height="25"
+                                Margin="2,0" 
+                                Click="OnHammingSelected"
+                                Style="{StaticResource SelectedButton}"
+                                FontSize="16"
+                                FontFamily="MS Gothic"
+                                FontWeight="Bold"
+                                Content="HAMMING"/>
+                        <Button Grid.Column="2" x:Name="HebbButton" 
+                                Height="25" 
+                                Margin="2,0" 
+                                Click="OnHebbSelected"
+                                FontFamily="MS Gothic"
+                                FontWeight="Bold"
+                                FontSize="16"
+                                Content="HEBB"/>
+                    </Grid>
+                    <Grid Margin="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Button x:Name="LearnButton" Content="LEARN" FontSize="24" IsEnabled="False" Click="OnActionLearn"/>
+                        <Button Grid.Column="1" Content="RUN" FontSize="24" Click="OnActionRun"/>
+                    </Grid>
                     <StackPanel Margin="10,0,10,10" Orientation="Horizontal">
                         <TextBlock FontSize="18">Best Match →</TextBlock>
                         <TextBlock x:Name="BestMatch" FontSize="18" Margin="10,0"/>

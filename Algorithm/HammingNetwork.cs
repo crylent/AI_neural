@@ -4,22 +4,21 @@ using System.Linq;
 
 namespace AI_neural.Algorithm;
 
-public class HammingNetwork
+public class HammingNetwork: NeutralNetwork
 {
     private readonly float[][] _weights;
     
-    private const int Size = BitImage8.Size * BitImage8.Size;
     private readonly float _shift;
     private readonly float _epsilon;
-    private const float K1 = 1f / Size;
+    private const float K1 = 1f / ImageSize;
     private const float Un = 1f / K1;
 
     private const int MaxIterations = 1000;
     
     public HammingNetwork(IReadOnlyList<BitImage8> samples)
     {
-        _weights = new float[Size][];
-        for (var i = 0; i < Size; i++)
+        _weights = new float[ImageSize][];
+        for (var i = 0; i < ImageSize; i++)
         {
             _weights[i] = new float[samples.Count];
         }
@@ -34,17 +33,17 @@ public class HammingNetwork
             }
         }
 
-        _shift = Size / 2f;
+        _shift = ImageSize / 2f;
         _epsilon = 1f / samples.Count;
     }
 
-    public int FindBestMatch(BitImage8 img)
+    public override int FindBestMatch(BitImage8 img)
     {
         var u = new float[_weights[0].Length];
         for (var i = 0; i < _weights[0].Length; i++)
         {
             var z = _shift;
-            for (var j = 0; j < Size; j++)
+            for (var j = 0; j < ImageSize; j++)
             {
                 z += _weights[j][i] * img.GetPoint(j);
             }

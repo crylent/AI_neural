@@ -10,7 +10,7 @@ public class BitCanvas: Canvas
 {
     public BitImage8 Image { get; private set; } = new();
 
-    private const int Size = 8;
+    private const int Size = BitImage8.Size;
     private const int CellSize = 50;
 
     private readonly Rectangle[][] _cells;
