@@ -7,9 +7,7 @@ namespace AI_neural.Algorithm;
 public class HebbNetwork: NeutralNetwork
 {
     private readonly List<int[]> _weights = new();
-
-    private readonly List<BitImage8> _samples = new();
-    private readonly List<int[]> _responses = new();
+    
 
     public override int FindBestMatch(BitImage8 img)
     {
@@ -57,9 +55,7 @@ public class HebbNetwork: NeutralNetwork
         {
             _weights.Add(Zeros());
         }
-        _samples.AddRange(samples);
-        _responses.AddRange(responses);
-        
+
         var canFinishLearning = false;
         while (!canFinishLearning)
         {
